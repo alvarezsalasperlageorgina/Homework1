@@ -1,0 +1,79 @@
+matrizSinSenial tv1;
+matrizSinSenial tv2;
+
+void setup ()
+{
+  size (400, 400);
+  tv1 = new matrizSinSenial (50, 50, 100, 5, 20);
+  tv2 = new matrizSinSenial (200, 50, 100, 5, 20);
+}
+
+void draw ()
+{
+  background (255);
+  
+  tv1. pixeleado ();
+  tv1. lupa ();
+  
+  tv2. pixeleado ();
+  tv2. lupa ();  
+  
+}
+
+class matrizSinSenial
+
+{
+  //Descripción de los atributos
+  
+  int x, y; //Posición
+  int tamanio; //Lado
+  int tCuadro;
+  int tPixel1;
+  int tPixel2;
+  
+  
+  //Método de construcción de clase
+  
+  matrizSinSenial (int x_, int y_, int tamanio_, int tCuadro_, int tPixel2_)
+  {
+    x = x_;
+    y = y_;
+    tamanio = tamanio_;
+    tCuadro = tCuadro_;
+    tPixel2 = tPixel2_;
+    
+    
+  }
+  
+  //Métodos
+  
+  
+  void pixeleado ()
+  {
+    noStroke ();
+    
+    for (int i= 0; i<tamanio; i+= tPixel1)
+    {
+      for (int j= 0; j<tamanio; i+= tPixel1)
+      {
+        fill (random (255));
+        rect (x+i, y+j, tPixel1, tPixel1);
+      }
+    }
+  }
+  
+  void lupa ()
+  {
+    if (((mouseX >= x) & (mouseX <= x+tamanio)) & ((mouseY >= y) & (mouseY <= y+tamanio)))
+    {
+      tPixel1 = tPixel2;
+    }
+      else
+      {
+        tPixel1= tCuadro;
+      }
+      
+  }
+  
+  
+}
